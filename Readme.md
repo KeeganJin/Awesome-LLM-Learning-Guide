@@ -5,3 +5,7 @@
 
 在[学习笔记](./Notes/)里，我们会从理论层面讲解LLM。
 
+
+### 学习资源推荐
+推荐阅读 [happy llm](https://github.com/datawhalechina/happy-llm/)
+

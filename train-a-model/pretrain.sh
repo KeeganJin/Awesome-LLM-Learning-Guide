@@ -1,18 +1,16 @@
-CUDA_VISIBLE_DEVICES=0,1
-
+CUDA_VISIBLE_DEVICES=0
 deepspeed pretrain.py \
-    --config_name autodl-tmp/qwen-1.5b \
-    --tokenizer_name autodl-tmp/qwen-1.5b \
-    --train_files autodl-tmp/dataset/pretrain_data/mobvoi_seq_monkey_general_open_corpus_small.jsonl \
-    --per_device_train_batch_size 16 \
-    --gradient_accumulation_steps 4 \
+    --config_name HF_models/qwen-0.5b \
+    --tokenizer_name HF_models/qwen-0.5b \
+    --train_files dataset/pretrain_data/mobvoi_seq_monkey_general_open_corpus_small.jsonl \
+    --per_device_train_batch_size 2 \
+    --gradient_accumulation_steps 32 \
     --do_train \
-    --output_dir autodl-tmp/output/pretrain \
-    --evaluation_strategy  no \
+    --output_dir output/pretrain \
     --learning_rate 1e-4 \
     --num_train_epochs 1 \
     --warmup_steps 200 \
-    --logging_dir autodl-tmp/output/pretrain/logs \
+    --logging_dir output/pretrain/logs \
     --logging_strategy steps \
     --logging_steps 5 \
     --save_strategy steps \
@@ -27,3 +25,4 @@ deepspeed pretrain.py \
     --report_to swanlab
     
     # --resume_from_checkpoint ${output_model}/checkpoint-20400 \
+    # --evaluation_strategy  no \
